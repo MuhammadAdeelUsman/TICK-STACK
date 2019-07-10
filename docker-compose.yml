@@ -17,6 +17,6 @@ services:
     ports:
       - 3001:3000
     volumes:
-      - /opt/appdata/grafana:/var/lib/grafana
+      - grafana-storage:/var/lib/grafana
     restart:
       always
