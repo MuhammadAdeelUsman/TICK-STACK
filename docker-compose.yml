@@ -12,11 +12,12 @@ services:
       always
   grafana:
     image: grafana/grafana
+    user: "0"
     container_name: grafana
     restart: always
     ports:
       - 3001:3000
     volumes:
-      - grafana-storage:/var/lib/grafana
+      - /opt/appdata/grafana:/var/lib/grafana
     restart:
       always
