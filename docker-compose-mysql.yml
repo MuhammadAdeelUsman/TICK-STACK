@@ -21,7 +21,7 @@ services:
       - /opt/appdata/grafana:/var/lib/grafana
     restart:
       always
-mysql:
+  mysql:
     image: debezium/example-mysql:0.9
     ports:
      - 3306:3306
