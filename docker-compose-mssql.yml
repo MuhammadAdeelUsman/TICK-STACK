@@ -28,7 +28,7 @@ services:
       - 3001:3000
     links:
      - influxdb
-     - mysql  
+     - sqlserver  
     volumes:
       - /opt/appdata/grafana:/var/lib/grafana
     restart:
