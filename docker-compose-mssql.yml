@@ -1,15 +1,14 @@
 version: '2'
 services:
-  mysql:
-    image: adix/mysqldb
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-CU9-GDR2
     ports:
-     - 3306:3306
+     - 1433:1433
     environment:
-     - MYSQL_ROOT_PASSWORD=debezium
-     - MYSQL_HOST=localhost
-     - MYSQL_PORT=3306
-     - MYSQL_USER=mysqluser
-     - MYSQL_PASSWORD=mysqlpw
+     - ACCEPT_EULA=Y
+     - MSSQL_PID=Standard
+     - SA_PASSWORD=Password!
+     - MSSQL_AGENT_ENABLED=true
   influxdb:
     image: influxdb:latest
     container_name: influxdb
