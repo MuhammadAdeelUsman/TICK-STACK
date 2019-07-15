@@ -11,9 +11,7 @@ services:
      - MYSQL_USER=mysqluser
      - MYSQL_PASSWORD=mysqlpw
     volumes:
-     - ./scripts/accounts.sql:/docker-entrypoint-initdb.d/
-     restart:
-      always 
+     - ./scripts/accounts.sql:/docker-entrypoint-initdb.d
   influxdb:
     image: influxdb:latest
     container_name: influxdb
