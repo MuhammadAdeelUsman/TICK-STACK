@@ -1,0 +1,36 @@
+version: '2'
+services:
+  mysql:
+    image: adix/mysqldb
+    ports:
+     - 3306:3306
+    environment:
+     - MYSQL_ROOT_PASSWORD=debezium
+     - MYSQL_HOST=localhost
+     - MYSQL_PORT=3306
+     - MYSQL_USER=mysqluser
+     - MYSQL_PASSWORD=mysqlpw
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    volumes:
+      - /opt/appdata/influxdb:/var/lib/influxdb
+    restart:
+      always
+  grafana:
+    image: grafana/grafana
+    user: "0"
+    container_name: grafana
+    restart: always
+    ports:
+      - 3001:3000
+    links:
+     - influxdb
+     - mysql  
+    volumes:
+      - /opt/appdata/grafana:/var/lib/grafana
+    restart:
+      always
