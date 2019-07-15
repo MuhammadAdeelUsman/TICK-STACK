@@ -10,8 +10,6 @@ services:
      - MYSQL_PORT=3306
      - MYSQL_USER=mysqluser
      - MYSQL_PASSWORD=mysqlpw
-    volumes:
-     - ./scripts/accounts.sql:/docker-entrypoint-initdb.d
   influxdb:
     image: influxdb:latest
     container_name: influxdb
