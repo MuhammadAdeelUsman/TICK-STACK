@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-    image: debezium/example-mysql:0.9
+    image: adix/mysqldb
     ports:
      - 3306:3306
     environment:
