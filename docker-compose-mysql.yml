@@ -1,5 +1,13 @@
 version: '2'
 services:
+  mysql:
+    image: debezium/example-mysql:0.9
+    ports:
+     - 3306:3306
+    environment:
+     - MYSQL_ROOT_PASSWORD=debezium
+     - MYSQL_USER=mysqluser
+     - MYSQL_PASSWORD=mysqlpw 
   influxdb:
     image: influxdb:latest
     container_name: influxdb
@@ -17,15 +25,10 @@ services:
     restart: always
     ports:
       - 3001:3000
+    links:
+     - influxdb
+     - mysql  
     volumes:
       - /opt/appdata/grafana:/var/lib/grafana
     restart:
       always
-  mysql:
-    image: debezium/example-mysql:0.9
-    ports:
-     - 3306:3306
-    environment:
-     - MYSQL_ROOT_PASSWORD=debezium
-     - MYSQL_USER=mysqluser
-     - MYSQL_PASSWORD=mysqlpw 
